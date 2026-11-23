@@ -21,8 +21,8 @@ typescript 7.0.2, vitest 5.1.1, eslint 10.15.0).
 
 ## R3. Exact money and percentages
 - **Decision**: Money = `int` paise. Percentages travel as **basis points** (`int`, 100.00% =
-  10000) inside the core and as strings with ≤ 2 decimals (e.g. `"33.33"`) in the API, parsed with
-  `decimal.Decimal` → exact integer. Largest-remainder computed with integer arithmetic:
+  10000) inside the core and as strings with ≤ 2 decimals (e.g. `"33.33"`) in the API, parsed by exact
+  integer string parsing (split on `.`, pad fraction to 2 digits) → exact integer basis points. Largest-remainder computed with integer arithmetic:
   `num = amount * weight`, `floor = num // total_weight`, `rem = num % total_weight`.
 - **Rationale**: Avoids binary floating point entirely (constitution I); exact remainders compare
   as integers so ties are deterministic.

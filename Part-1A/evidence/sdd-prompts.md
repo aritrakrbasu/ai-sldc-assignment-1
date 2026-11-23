@@ -42,3 +42,14 @@ Note: research R5 records the switch React 18 -> 19 (current major, verified wit
 ## 5. /speckit-tasks
 Input: (none — generated from plan.md, spec.md, data-model.md, contracts/api.md, research.md)
 Output: tasks.md — 50 tasks (T001–T050), tests-first per user story (constitution III).
+
+## 6. /speckit-analyze
+Result: 0 CRITICAL, 2 HIGH, 4 MEDIUM, 1 LOW; coverage 28/28 requirements.
+- E1 HIGH Group.members uncited -> T018 cites it
+- E2 HIGH Settlement.date uncited -> T036 cites it
+- E3 MED SC-001 500-op property test missing -> T024 extended
+- F1 MED research R3 Decimal vs T006 integer parsing -> R3 aligned to integer parsing
+- F2 MED payer/receiver vs from_member/to_member -> mapping note in data-model.md
+- C1 MED EMPTY_SPLIT undefined in spec -> FR-010 + edge case
+- C2 LOW SC-002 manual only -> noted in T050
+Student approved "apply all 7" before implementation.

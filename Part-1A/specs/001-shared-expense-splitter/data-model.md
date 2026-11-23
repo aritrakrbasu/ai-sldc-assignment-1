@@ -49,8 +49,8 @@ Deletion: hard delete (FR-011).
 |-------|------|-------|
 | id | int | assigned |
 | group_id | int | FK Group |
-| from_member | int | member in group |
-| to_member | int | member in group, ≠ from_member (`SAME_MEMBER`) |
+| from_member | int | member in group (the spec's "payer" of a settlement) |
+| to_member | int | member in group (the spec's "receiver"), ≠ from_member (`SAME_MEMBER`) |
 | amount | int | 1 … 1,000,000,000; may exceed current debt (clarification Q1) |
 | date | date | ISO |
 | seq | int | creation sequence |

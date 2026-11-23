@@ -182,6 +182,7 @@ settle-up plan, record a settlement, download CSV.
 - Payer is not among participants → allowed; payer's share is 0.
 - A participant or payer id not belonging to the group → rejected with `UNKNOWN_MEMBER`.
 - Duplicate participant in a split → rejected with `DUPLICATE_PARTICIPANT`.
+- Split with no participants → rejected with `EMPTY_SPLIT`.
 - SHARES with any weight ≤ 0 or all weights 0 → rejected with `INVALID_WEIGHT`.
 - PERCENT with more than 2 decimal places or a negative value → rejected as invalid input.
 - EXACT with a negative per-member amount → rejected as invalid input.
@@ -225,7 +226,8 @@ settle-up plan, record a settlement, download CSV.
   largest fractional remainder, ties broken by member order.
 - **FR-009**: For every accepted expense, the sum of participant shares MUST equal the amount.
 - **FR-010**: Participants and payer MUST belong to the group (`UNKNOWN_MEMBER`); a participant
-  MUST NOT appear twice (`DUPLICATE_PARTICIPANT`).
+  MUST NOT appear twice (`DUPLICATE_PARTICIPANT`); a split with zero participants MUST be rejected
+  (`EMPTY_SPLIT`).
 - **FR-011**: Users MUST be able to delete an expense; unknown ids yield `EXPENSE_NOT_FOUND`.
 
 **Balances & settle-up**

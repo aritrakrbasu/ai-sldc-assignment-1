@@ -58,7 +58,7 @@ must cite the FR / acceptance-scenario id they verify.
 - [ ] T017 [P] [US1] `tests/contract/test_expenses_equal_api.py`: C4 EQUAL (US1-2, US1-3), C7 balances, data-model.md Expense.description / Expense.amount / Expense.date bounds → 422
 
 ### Implementation
-- [ ] T018 [US1] Group/member validation `validate_members(names)` in `src/splitease/core/groups.py` (data-model.md Group.name, Member.name, Member.position)
+- [ ] T018 [US1] Group/member validation `validate_members(names)` in `src/splitease/core/groups.py` (data-model.md Group.name, Group.members, Member.name, Member.position)
 - [ ] T019 [US1] EQUAL split + common participant validation in `src/splitease/core/splitting.py` (data-model.md Expense.splits, Expense.paid_by, Expense.shares)
 - [ ] T020 [US1] Balances in `src/splitease/core/balances.py` (FR-012/FR-013)
 - [ ] T021 [US1] Pydantic schemas `GroupIn`, `Group`, `ExpenseIn`, `Expense`, `Balance` in `src/splitease/api/schemas.py` (data-model.md Expense.description, Expense.amount, Expense.date, Expense.split_mode)
@@ -72,7 +72,7 @@ must cite the FR / acceptance-scenario id they verify.
 
 ### Tests (write first)
 - [ ] T023 [P] [US2] `tests/unit/test_splitting_modes.py`: FR-005 (`SPLIT_SUM_MISMATCH`), FR-006 (10000 → 3333,3333,3334; 100 → 33,33,34; `PERCENT_SUM_INVALID` for 99.99; >2 decimals rejected), FR-007 (1:2:3 of 100000 → 16667,33333,50000; `INVALID_WEIGHT`), FR-008 tie-break by member order
-- [ ] T024 [P] [US2] `tests/property/test_split_invariants.py` (Hypothesis): for random amounts/modes/participants, Σ shares = amount, all shares ≥ 0, determinism (same input twice → same output) — SC-001
+- [ ] T024 [P] [US2] `tests/property/test_split_invariants.py` (Hypothesis): for random amounts/modes/participants, Σ shares = amount, all shares ≥ 0, determinism (same input twice → same output); plus random sequences of expenses + settlements (`max_examples ≥ 500`) asserting Σ balances = 0 after every operation — SC-001, FR-013
 - [ ] T025 [P] [US2] `tests/contract/test_expenses_modes_api.py`: C4 for EXACT/PERCENT/SHARES success + each 400 error code; nothing persisted on error (FR-018)
 
 ### Implementation
@@ -104,7 +104,7 @@ must cite the FR / acceptance-scenario id they verify.
 
 ### Implementation
 - [ ] T035 [US4] Settlement validation in `src/splitease/core/settlements.py` and balance integration in `src/splitease/core/balances.py` (data-model.md Settlement.from_member, Settlement.to_member, Settlement.amount)
-- [ ] T036 [US4] Route C6 + schemas + repository insert (no delete) in `src/splitease/api/app.py`, `src/splitease/api/schemas.py`, `src/splitease/storage/repository.py`
+- [ ] T036 [US4] Route C6 + schemas + repository insert (no delete) in `src/splitease/api/app.py`, `src/splitease/api/schemas.py`, `src/splitease/storage/repository.py` (data-model.md Settlement.date)
 
 ---
 
@@ -141,7 +141,7 @@ must cite the FR / acceptance-scenario id they verify.
 - [ ] T047 [P] `README.md` in Part-1A: run app, run harness, layout, traceability pointer
 - [ ] T048 [P] Traceability matrix `specs/001-shared-expense-splitter/traceability.md` (FR/SC → test files)
 - [ ] T049 Run full harness, record in `evidence/`, then follow feedback/repair loop (constitution IV)
-- [ ] T050 Run quickstart.md scenarios manually in the browser
+- [ ] T050 Run quickstart.md scenarios manually in the browser (also manual check of SC-002: group + first expense in < 2 min)
 
 ---
 
