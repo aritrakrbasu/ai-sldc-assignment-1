@@ -63,5 +63,6 @@ No delete/update operation exists (clarification Q2).
 
 ## Error codes (core)
 `INVALID_MEMBERS`, `UNKNOWN_MEMBER`, `DUPLICATE_PARTICIPANT`, `SPLIT_SUM_MISMATCH`,
-`PERCENT_SUM_INVALID`, `INVALID_WEIGHT`, `INVALID_AMOUNT`, `SAME_MEMBER`, `EMPTY_SPLIT`.
+`PERCENT_SUM_INVALID`, `INVALID_PERCENT` (malformed percent: >2 decimals, negative, >100, non-numeric), `INVALID_WEIGHT`, `INVALID_AMOUNT`, `SAME_MEMBER`, `EMPTY_SPLIT`, `INVALID_GROUP_NAME` (Group.name empty after trim or > 60 chars),
+`INVALID_SPLIT_MODE` (mode not one of the four; the API rejects this earlier with 422).
 API-level: `GROUP_NOT_FOUND`, `EXPENSE_NOT_FOUND`, `VALIDATION_ERROR`.
