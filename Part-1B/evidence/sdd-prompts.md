@@ -27,3 +27,10 @@ user can send a parsed debit to a SplitEase group (Part 1A app) as a shared expe
 confirmation. Includes a REST API, React web UI and an evaluation harness."
 Output: `specs/001-sms-finance-inbox/spec.md` (FR-001..FR-020, SCH, INV-1..9, PROP-1..6, GR-1..6,
 evaluation threshold), `checklists/requirements.md` (all pass).
+
+## 3. /speckit-clarify
+Questions asked by the agent and answered by the student (Aritra Basu):
+- Q1 Evaluation threshold strictness? → "Stricter" (R=3, 100% structural, 100% safety, ≥95% cases, mean ≥0.90)
+- Q2 Default period when none given? → "This month to date"
+- Q3 Gemini model? → "Auto: best Flash model" (newest stable flash for the key, temperature 0.2)
+Output: Clarifications section, Evaluation Threshold (c)/(d) raised, FR-009 updated.

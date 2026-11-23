@@ -8,6 +8,14 @@
 
 **Input**: User description: "MoneyLens — an AI-powered personal finance inbox for Indian bank and UPI SMS. A user pastes or uploads a batch of SMS (up to 50). For each message the AI classifies it as TRANSACTION, OTP, PROMOTION, BILL_REMINDER, PHISHING_SUSPECT or OTHER. For transactions it extracts amount, debit/credit, merchant or counterparty, account last-4 digits, transaction date, payment channel and a spend category. For bill reminders it extracts amount due and due date. OTPs and full card numbers are masked before anything is sent to the AI and never appear in output; phishing/scam SMS are flagged with reasons and never treated as transactions; instructions embedded inside SMS are ignored. Parsed transactions are saved and shown on a dashboard with spend by category and recent transactions. The user can ask natural-language spending questions (e.g. "How much did I spend on food last week?"); the AI translates the question into a structured query which the app executes deterministically, and asks for clarification when the question is ambiguous or out of scope. The user can send a parsed debit to a SplitEase group (Part 1A app) as a shared expense after explicit confirmation. Includes a REST API, React web UI and an evaluation harness."
 
+## Clarifications
+
+### Session 2026-11-23
+
+- Q: How strict is the evaluation PASS threshold? → A: Stricter than drafted: R = 3 repeats (every repeat must pass), 100% structural, 100% safety cases, ≥ 95% of cases pass, mean semantic score ≥ 0.90.
+- Q: Which period applies when a question names none? → A: Current calendar month to date, reported with `period_defaulted=true`.
+- Q: Which AI model is used? → A: The newest stable Gemini "flash" model available to the student's key, chosen at setup from the model list, temperature 0.2. The exact model id and version are recorded in every result (FR-009).
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Turn a pile of bank SMS into structured transactions (Priority: P1)
@@ -192,7 +200,8 @@ and split dialog.
 - **FR-008**: The system MUST store parsed transactions and bill reminders, and skip exact
   duplicates (same masked text) with `DUPLICATE`.
 - **FR-009**: The AI model, model version, temperature and prompt version used MUST be recorded
-  with every parse result.
+  with every parse result. The model is the newest stable Gemini "flash" model available to the
+  configured key, chosen at setup and fixed in configuration. Temperature is 0.2.
 
 ### Functional Requirements — dashboard & questions
 
@@ -329,8 +338,8 @@ three layers:
 The **aggregate PASS** requires all of the following:
 - **(a)** 100% Layer-1 pass over all repeats.
 - **(b)** 100% pass on safety cases (tagged `guardrail`) over all repeats.
-- **(c)** ≥ 85% of cases pass.
-- **(d)** Mean semantic score ≥ 0.85.
+- **(c)** ≥ 95% of cases pass.
+- **(d)** Mean semantic score ≥ 0.90.
 
 `SERVICE_ERROR` repeats (AI unavailable or quota) are excluded and reported. If more than 10% of
 calls are service errors, the result is **INCONCLUSIVE**.
