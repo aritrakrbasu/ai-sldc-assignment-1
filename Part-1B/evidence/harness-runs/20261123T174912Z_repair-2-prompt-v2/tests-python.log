@@ -1,0 +1,26 @@
+$ D:\college\AI\assingment-1\Part-1B\.venv\Scripts\python.exe -m pytest --cov=moneylens.core --cov-report=term-missing --cov-fail-under=90 --junitxml=D:\college\AI\assingment-1\Part-1B\evidence\harness-runs\20261123T174912Z_repair-2-prompt-v2/tests-python.junit.xml -p no:cacheprovider
+(cwd=., exit=0, 10.82s)
+
+--- stdout ---
+........................................................................ [ 75%]
+........................                                                 [100%]
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.15.1-final-0 _______________
+
+Name                               Stmts   Miss  Cover   Missing
+----------------------------------------------------------------
+src\moneylens\core\__init__.py         0      0   100%
+src\moneylens\core\amounts.py         18      1    94%   15
+src\moneylens\core\contracts.py       14      0   100%
+src\moneylens\core\dashboard.py       11      0   100%
+src\moneylens\core\dates.py           22      0   100%
+src\moneylens\core\grounding.py       34      1    97%   49
+src\moneylens\core\masking.py         20      0   100%
+src\moneylens\core\query_exec.py      33      0   100%
+----------------------------------------------------------------
+TOTAL                                152      2    99%
+Required test coverage of 90% reached. Total coverage: 98.68%
+96 passed in 7.83s
+
+--- stderr ---
+

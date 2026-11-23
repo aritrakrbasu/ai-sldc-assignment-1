@@ -1,0 +1,136 @@
+{
+  "run_id": "20261123T174912Z_repair-2-prompt-v2",
+  "label": "repair-2-prompt-v2",
+  "timestamp_utc": "20261123T174912Z",
+  "config_hash": "d390719d367e90a98bfcd90e0b7832ac8c5325a612b0724b3488633b1d6f716a",
+  "python": "3.15.1",
+  "overall": "PASS",
+  "gates": [
+    {
+      "id": "lint-python",
+      "kind": "lint",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 1.12,
+      "command": [
+        "D:\\college\\AI\\assingment-1\\Part-1B\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "tests",
+        ".harness",
+        "scripts",
+        "--config",
+        ".harness/ruff.toml",
+        "--output-format",
+        "concise"
+      ],
+      "log": "lint-python.log",
+      "failures": []
+    },
+    {
+      "id": "lint-frontend",
+      "kind": "lint",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 5.53,
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.cmd",
+        "run",
+        "--silent",
+        "lint"
+      ],
+      "log": "lint-frontend.log",
+      "failures": []
+    },
+    {
+      "id": "typecheck-frontend",
+      "kind": "lint",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 8.27,
+      "command": [
+        "C:\\Program Files\\nodejs\\npx.cmd",
+        "tsc",
+        "-p",
+        "tsconfig.json"
+      ],
+      "log": "typecheck-frontend.log",
+      "failures": []
+    },
+    {
+      "id": "security-python",
+      "kind": "security",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 0.65,
+      "command": [
+        "D:\\college\\AI\\assingment-1\\Part-1B\\.venv\\Scripts\\python.exe",
+        "-m",
+        "bandit",
+        "-c",
+        ".harness/bandit.yaml",
+        "-r",
+        "src",
+        "scripts",
+        "-ll",
+        "-f",
+        "txt"
+      ],
+      "log": "security-python.log",
+      "failures": []
+    },
+    {
+      "id": "security-deps",
+      "kind": "security",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 3.14,
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.cmd",
+        "audit",
+        "--audit-level=high"
+      ],
+      "log": "security-deps.log",
+      "failures": []
+    },
+    {
+      "id": "tests-python",
+      "kind": "tests",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 10.82,
+      "command": [
+        "D:\\college\\AI\\assingment-1\\Part-1B\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "--cov=moneylens.core",
+        "--cov-report=term-missing",
+        "--cov-fail-under=90",
+        "--junitxml=D:\\college\\AI\\assingment-1\\Part-1B\\evidence\\harness-runs\\20261123T174912Z_repair-2-prompt-v2/tests-python.junit.xml",
+        "-p",
+        "no:cacheprovider"
+      ],
+      "log": "tests-python.log",
+      "failures": []
+    },
+    {
+      "id": "tests-frontend",
+      "kind": "tests",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 10.54,
+      "command": [
+        "C:\\Program Files\\nodejs\\npx.cmd",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile.junit=D:\\college\\AI\\assingment-1\\Part-1B\\evidence\\harness-runs\\20261123T174912Z_repair-2-prompt-v2/tests-frontend.junit.xml"
+      ],
+      "log": "tests-frontend.log",
+      "failures": []
+    }
+  ]
+}

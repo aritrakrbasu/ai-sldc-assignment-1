@@ -1,0 +1,25 @@
+$ C:\Program Files\nodejs\npx.cmd vitest run --reporter=default --reporter=junit --outputFile.junit=D:\college\AI\assingment-1\Part-1B\evidence\harness-runs\20261123T174912Z_repair-2-prompt-v2/tests-frontend.junit.xml
+(cwd=frontend, exit=0, 10.54s)
+
+--- stdout ---
+
+ RUN  v5.1.1 D:/college/AI/assingment-1/Part-1B/frontend
+
+ ✓ tests/format.test.ts (7 tests) 6ms
+ ✓ tests/App.test.tsx (5 tests) 1744ms
+   ✓ Inbox (US1, US6) (2)
+     ✓ parses pasted messages split by blank lines and shows cards 600ms
+   ✓ Ask (US4) (2)
+     ✓ shows interpreted filters and the computed answer 394ms
+   ✓ Split dialog (US5) (1)
+     ✓ requires preview then explicit confirmation 332ms
+
+ Test Files  2 passed (2)
+      Tests  12 passed (12)
+   Start at  23:19:46
+   Duration  5.66s (tests 48%, environment 38%, setup 8%, import 3%, transform 2%)
+
+JUNIT report written to D:/college/AI/assingment-1/Part-1B/evidence/harness-runs/20261123T174912Z_repair-2-prompt-v2/tests-frontend.junit.xml
+
+--- stderr ---
+

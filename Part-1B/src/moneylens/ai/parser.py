@@ -16,8 +16,8 @@ from moneylens.core.masking import find_long_numbers, mask
 
 from .llm import LLMClient, ServiceError
 
-PROMPT_VERSION = "parse_sms.v1"
-PROMPT = (Path(__file__).resolve().parents[3] / "prompts" / "parse_sms.v1.md").read_text(
+PROMPT_VERSION = "parse_sms.v2"
+PROMPT = (Path(__file__).resolve().parents[3] / "prompts" / "parse_sms.v2.md").read_text(
     encoding="utf-8")
 MAX_CHARS = 1000
 MAX_WORKERS = 4
