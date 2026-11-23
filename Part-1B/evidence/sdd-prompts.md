@@ -63,3 +63,5 @@ Result: 1 CRITICAL, 1 HIGH, 3 MEDIUM, 1 LOW. Student approved "apply all 6":
 - Spec revision during harness writing (pre-implementation): FR-002(b)/INV-6 long-number rule
   narrowed so date-times are not masked (recorded in spec Clarifications).
 - research R3 amended: client-side rate limiter MONEYLENS_RPM (default 10/min).
+- Evaluation: initial-generation FAIL (P14 guardrail) -> prompt v2 repair -> re-evaluation PASS
+  (38/38, mean 1.0). SC-004 61.39 s (unmet by 1.4 s, disclosed). Human decision pending.

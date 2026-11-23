@@ -1,0 +1,8 @@
+$ D:\college\AI\assingment-1\Part-1A\.venv\scripts\python.exe -m ruff check src tests .harness --config .harness/ruff.toml --output-format concise
+(cwd=., exit=0, 1.15s)
+
+--- stdout ---
+All checks passed!
+
+--- stderr ---
+

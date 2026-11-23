@@ -1,0 +1,26 @@
+$ C:\Program Files\nodejs\npx.cmd vitest run --reporter=default --reporter=junit --outputFile.junit=D:\college\AI\assingment-1\Part-1A\evidence\harness-runs\20261123T174955Z_run/tests-frontend.junit.xml
+(cwd=frontend, exit=0, 10.26s)
+
+--- stdout ---
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.1 [39m[90mD:/college/AI/assingment-1/Part-1A/frontend[39m
+
+ [32m✓[39m tests/money.test.ts [2m([22m[2m28 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/App.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 1620[2mms[22m[39m
+   [32m✓[39m US7-1 home page [2m(2)[22m
+     [33m[2m✓[22m[39m creates a group with members one per line[33m 454[2mms[22m[39m
+   [32m✓[39m US7-2 expense form validation [2m(2)[22m
+     [33m[2m✓[22m[39m blocks an amount with 3 decimals before calling the API (FR-022)[33m 373[2mms[22m[39m
+     [33m[2m✓[22m[39m shows the API error message verbatim and keeps state[33m 311[2mms[22m[39m
+   [32m✓[39m US7-3 panels refresh after mutation [2m(2)[22m
+     [33m[2m✓[22m[39m reloads balances and settle-up after adding an expense[33m 349[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m34 passed[39m[22m[90m (34)[39m
+[2m   Start at [22m 23:20:27
+[2m   Duration [22m 5.60s[2m (tests 42%, environment 41%, setup 9%, transform 4%, import 3%)[22m
+
+JUNIT report written to D:/college/AI/assingment-1/Part-1A/evidence/harness-runs/20261123T174955Z_run/tests-frontend.junit.xml
+
+--- stderr ---
+
