@@ -26,8 +26,7 @@
       "enum": [
         null,
         "MODEL_OUTPUT_INVALID",
-        "MODEL_UNAVAILABLE",
-        "INVALID_QUESTION"
+        "MODEL_UNAVAILABLE"
       ]
     },
     "question": {
@@ -261,8 +260,7 @@
           "error_code": {
             "enum": [
               "MODEL_OUTPUT_INVALID",
-              "MODEL_UNAVAILABLE",
-              "INVALID_QUESTION"
+              "MODEL_UNAVAILABLE"
             ]
           }
         }

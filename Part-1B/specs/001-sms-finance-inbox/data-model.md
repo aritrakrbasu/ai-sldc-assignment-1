@@ -36,7 +36,7 @@ and the extra validation rules.
 | biller | str \| null | 1–80 chars |
 
 ## Phishing reasons
-Stored as a JSON array on the message row (`phishing_reasons`). Non-empty for PHISHING_SUSPECT.
+Stored as a JSON array on the message row (`Message.phishing_reasons`). Non-empty for PHISHING_SUSPECT, otherwise null.
 
 ## Query (not stored)
 `ModelQueryOutput` → validated → executed by `core/query_exec.py` over transactions with
@@ -61,4 +61,5 @@ SplitEase codes.
 ## Error / reason codes
 Parse: `MESSAGE_TOO_LONG`, `MODEL_OUTPUT_INVALID` (sub-reasons `SCHEMA_INVALID`, `NOT_JSON`,
 `AMOUNT_NOT_GROUNDED`), `MODEL_UNAVAILABLE`, `DUPLICATE`. Batch: `INVALID_BATCH`. Query:
-`MODEL_OUTPUT_INVALID`, `MODEL_UNAVAILABLE`, `INVALID_QUESTION` (empty or > 300 chars).
+`MODEL_OUTPUT_INVALID`, `MODEL_UNAVAILABLE`. An empty or > 300-character question is rejected at the API with
+422 `VALIDATION_ERROR` (contracts/api.md M4).

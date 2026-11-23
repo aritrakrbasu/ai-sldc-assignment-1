@@ -224,7 +224,8 @@ and split dialog.
 - **FR-015**: The system MUST let the user send a stored DEBIT transaction to a SplitEase group
   as an EQUAL expense, only when the request carries `confirm=true`. Without it, return
   `CONFIRMATION_REQUIRED` and a preview.
-- **FR-016**: Non-debit or non-transaction items MUST be rejected with `NOT_A_DEBIT`. SplitEase
+- **FR-016**: Non-debit or non-transaction items MUST be rejected with `NOT_A_DEBIT`. A transaction
+  already sent to SplitEase MUST be rejected with `ALREADY_SHARED`, so it is never added twice. SplitEase
   failures MUST return `SPLITEASE_UNAVAILABLE` (network) or pass through SplitEase's error code.
 - **FR-017**: The SplitEase base URL MUST be configurable (default `http://127.0.0.1:8000`).
 

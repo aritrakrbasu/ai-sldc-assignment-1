@@ -48,3 +48,12 @@ Output: plan.md, research.md (R1-R9), data-model.md, contracts/{api.md, 4 JSON S
 ## 5. /speckit-tasks
 Input: (none). Output: tasks.md — 43 tasks; dataset, threshold and evaluation harness are
 foundational (written before AI app logic).
+
+## 6. /speckit-analyze
+Result: 1 CRITICAL, 1 HIGH, 3 MEDIUM, 1 LOW. Student approved "apply all 6":
+- D1 CRITICAL evidence files not leak-scanned -> T009 adds EVIDENCE_LEAK scan (INV-6)
+- E1 HIGH Message.phishing_reasons uncited -> T015 cites it
+- E2 MED SC-004 untested -> T041 records 20-message batch timing
+- F1 MED INVALID_QUESTION vs 422 -> unified on 422 VALIDATION_ERROR; schema enum updated
+- C1 MED ALREADY_SHARED not in spec -> added to FR-016
+- C2 LOW SC-006 manual -> noted in T043
