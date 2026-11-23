@@ -44,3 +44,7 @@ Frontend React + TS + Vite like Part 1A. Harness: .harness/evaluate.py (dataset 
 invariants/properties -> semantic scoring -> threshold, R=3, service errors separated) plus
 .harness/run_harness.py deterministic gates (ruff, bandit, pytest, eslint, tsc, vitest, npm audit)."
 Output: plan.md, research.md (R1-R9), data-model.md, contracts/{api.md, 4 JSON Schemas}, quickstart.md.
+
+## 5. /speckit-tasks
+Input: (none). Output: tasks.md — 43 tasks; dataset, threshold and evaluation harness are
+foundational (written before AI app logic).
