@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "query_result.schema.json",
+  "title": "QueryResult v1 \u2014 application output per question",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "error_code",
+    "question",
+    "reference_date",
+    "intent",
+    "query",
+    "clarification",
+    "answer",
+    "meta"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "ok",
+        "error"
+      ]
+    },
+    "error_code": {
+      "enum": [
+        null,
+        "MODEL_OUTPUT_INVALID",
+        "MODEL_UNAVAILABLE",
+        "INVALID_QUESTION"
+      ]
+    },
+    "question": {
+      "type": "string"
+    },
+    "reference_date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "intent": {
+      "enum": [
+        "SPEND_QUERY",
+        "NEEDS_CLARIFICATION",
+        "OUT_OF_SCOPE",
+        null
+      ]
+    },
+    "query": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "metric",
+            "direction",
+            "categories",
+            "merchant_contains",
+            "date_from",
+            "date_to",
+            "period_defaulted"
+          ],
+          "properties": {
+            "metric": {
+              "enum": [
+                "TOTAL",
+                "COUNT",
+                "AVERAGE",
+                "LARGEST",
+                "LIST",
+                "TOP_MERCHANTS"
+              ]
+            },
+            "direction": {
+              "enum": [
+                "DEBIT",
+                "CREDIT"
+              ]
+            },
+            "categories": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "FOOD",
+                  "GROCERIES",
+                  "TRANSPORT",
+                  "SHOPPING",
+                  "BILLS_UTILITIES",
+                  "ENTERTAINMENT",
+                  "HEALTH",
+                  "EDUCATION",
+                  "RENT",
+                  "TRANSFER",
+                  "INCOME",
+                  "CASH",
+                  "OTHER"
+                ]
+              }
+            },
+            "merchant_contains": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "date_from": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "date_to": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "period_defaulted": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "clarification": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "answer": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value_paise",
+            "count",
+            "items"
+          ],
+          "properties": {
+            "value_paise": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "model",
+        "temperature",
+        "prompt_version"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "intent": {
+            "const": "SPEND_QUERY"
+          }
+        },
+        "required": [
+          "intent"
+        ]
+      },
+      "then": {
+        "properties": {
+          "query": {
+            "type": "object"
+          },
+          "answer": {
+            "type": "object"
+          },
+          "clarification": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "intent": {
+            "enum": [
+              "NEEDS_CLARIFICATION",
+              "OUT_OF_SCOPE"
+            ]
+          }
+        },
+        "required": [
+          "intent"
+        ]
+      },
+      "then": {
+        "properties": {
+          "query": {
+            "type": "null"
+          },
+          "answer": {
+            "type": "null"
+          },
+          "clarification": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "error"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "intent": {
+            "const": null
+          },
+          "query": {
+            "type": "null"
+          },
+          "answer": {
+            "type": "null"
+          },
+          "error_code": {
+            "enum": [
+              "MODEL_OUTPUT_INVALID",
+              "MODEL_UNAVAILABLE",
+              "INVALID_QUESTION"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ok"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "error_code": {
+            "const": null
+          },
+          "intent": {
+            "enum": [
+              "SPEND_QUERY",
+              "NEEDS_CLARIFICATION",
+              "OUT_OF_SCOPE"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

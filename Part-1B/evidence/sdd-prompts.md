@@ -34,3 +34,13 @@ Questions asked by the agent and answered by the student (Aritra Basu):
 - Q2 Default period when none given? → "This month to date"
 - Q3 Gemini model? → "Auto: best Flash model" (newest stable flash for the key, temperature 0.2)
 Output: Clarifications section, Evaluation Threshold (c)/(d) raised, FR-009 updated.
+
+## 4. /speckit-plan
+Input: "Backend: Python 3.15, FastAPI, Pydantic v2, stdlib sqlite3. Gemini via google-genai SDK with
+JSON-schema structured output; pluggable LLM client with a deterministic fake for tests. Pure core
+(masking, amount/date parsing, grounding post-validator, deterministic query executor, dashboard
+aggregation). Prompts versioned in prompts/. JSON Schemas in contracts used by both app and harness.
+Frontend React + TS + Vite like Part 1A. Harness: .harness/evaluate.py (dataset -> app -> schema ->
+invariants/properties -> semantic scoring -> threshold, R=3, service errors separated) plus
+.harness/run_harness.py deterministic gates (ruff, bandit, pytest, eslint, tsc, vitest, npm audit)."
+Output: plan.md, research.md (R1-R9), data-model.md, contracts/{api.md, 4 JSON Schemas}, quickstart.md.
