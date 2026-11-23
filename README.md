@@ -5,7 +5,7 @@
 
 **Repository:** https://github.com/aritrakrbasu/ai-sldc-assignment-1
 
-**Demo videos:** [Part 1A](https://drive.google.com/file/d/1DKrhkmh1Wx5BB-bXE4wAkKVp1d4X3w-M/view?usp=sharing) · [Part 1B](https://drive.google.com/file/d/1DKrhkmh1Wx5BB-bXE4wAkKVp1d4X3w-M/view?usp=sharing)
+**Demo videos:** [Part 1A](https://drive.google.com/file/d/1DKrhkmh1Wx5BB-bXE4wAkKVp1d4X3w-M/view?usp=sharing) · [Part 1B](https://drive.google.com/file/d/1thRN3aOMMupn_9ncktPTuWF1tooqo-SV/view?usp=sharing)
 
 Both parts were built with the **GitHub Spec Kit** workflow:
 constitution → specify → clarify → plan → tasks → analyze → implement. A **Claude Code** coding
