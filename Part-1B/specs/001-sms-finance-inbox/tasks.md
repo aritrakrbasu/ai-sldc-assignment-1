@@ -18,21 +18,21 @@ the 3-layer harness that runs against the real model. The dataset and harness ar
 
 ## Phase 1: Setup
 
-- [ ] T001 Create `pyproject.toml` (deps from plan.md; `[dev]` extra), package skeleton `src/moneylens/{core,ai,storage,api}/__init__.py`, `src/moneylens/__main__.py`, `.env.example` (`GEMINI_API_KEY=`, `MONEYLENS_MODEL=`, `MONEYLENS_TEMPERATURE=0.2`, `SPLITEASE_URL=http://127.0.0.1:8000`)
-- [ ] T002 [P] Scaffold `frontend/` (React 19, Vite 8, TS ~6.0, ESLint, Vitest), same rules as Part 1A
-- [ ] T003 [P] Deterministic harness `.harness/run_harness.py`, `.harness/gates.json`, `.harness/ruff.toml`, `.harness/bandit.yaml`, `.harness/gates.lock` (same design as Part 1A, research R7)
-- [ ] T004 `src/moneylens/config.py`: load `.env` with python-dotenv; expose model, temperature, SplitEase URL and `key_configured: bool`; never log or return the key (constitution III)
-- [ ] T005 `scripts/select_model.py`: list models for the key and pick the newest stable flash model (research R1); write `MONEYLENS_MODEL` to `.env`; print only the model id
+- [X] T001 Create `pyproject.toml` (deps from plan.md; `[dev]` extra), package skeleton `src/moneylens/{core,ai,storage,api}/__init__.py`, `src/moneylens/__main__.py`, `.env.example` (`GEMINI_API_KEY=`, `MONEYLENS_MODEL=`, `MONEYLENS_TEMPERATURE=0.2`, `SPLITEASE_URL=http://127.0.0.1:8000`)
+- [X] T002 [P] Scaffold `frontend/` (React 19, Vite 8, TS ~6.0, ESLint, Vitest), same rules as Part 1A
+- [X] T003 [P] Deterministic harness `.harness/run_harness.py`, `.harness/gates.json`, `.harness/ruff.toml`, `.harness/bandit.yaml`, `.harness/gates.lock` (same design as Part 1A, research R7)
+- [X] T004 `src/moneylens/config.py`: load `.env` with python-dotenv; expose model, temperature, SplitEase URL and `key_configured: bool`; never log or return the key (constitution III)
+- [X] T005 `scripts/select_model.py`: list models for the key and pick the newest stable flash model (research R1); write `MONEYLENS_MODEL` to `.env`; print only the model id
 
 ---
 
 ## Phase 2: Foundational — evaluation assets & core helpers (BLOCKING)
 
-- [ ] T006 [P] `evals/dataset.json`: ≥ 15 cases. Each case has `id`, `type` (parse|ask), `tags` (normal, boundary, ambiguous, missing_info, malformed, adversarial, guardrail), `requirement_refs`, input, `reference_date`, `expected` (ground-truth fields, accepted category set, merchant aliases) and `checks` (list of INV/PROP ids) (FR-019)
-- [ ] T007 [P] `evals/fixtures/transactions.json`: fixed transaction set for ask cases with hand-computed expected answers in the dataset
-- [ ] T008 [P] `evals/threshold.json`: spec Evaluation Threshold (R=3, 100% structural, 100% guardrail, ≥ 0.95 case pass, mean semantic ≥ 0.90, service-error limit 0.10, per-type weights); hash-locked by the harness
-- [ ] T009 Evaluation harness `.harness/evaluate.py` + `.harness/checks/structural.py` (Layer 1, jsonschema against `contracts/parse_result.schema.json` and `query_result.schema.json`), `.harness/checks/properties.py` (Layer 2: INV-2..INV-9, PROP-1..PROP-5, implemented independently of `src/`), `.harness/checks/semantic.py` (Layer 3 weighted scoring); aggregation, SERVICE_ERROR handling, INCONCLUSIVE rule; writes `evidence/eval-runs/<ts>_<label>/{eval-results.json, failures.md}` (FR-020, research R7); after writing, scans every evidence file it produced for unmasked OTPs / ≥ 9-digit runs and fails the run with `EVIDENCE_LEAK` if any are found (INV-6, constitution III)
-- [ ] T010 [P] Harness self-tests `tests/harness/test_checks.py`: each check catches a hand-made violating output and accepts a valid one (so the harness itself is validated)
+- [X] T006 [P] `evals/dataset.json`: ≥ 15 cases. Each case has `id`, `type` (parse|ask), `tags` (normal, boundary, ambiguous, missing_info, malformed, adversarial, guardrail), `requirement_refs`, input, `reference_date`, `expected` (ground-truth fields, accepted category set, merchant aliases) and `checks` (list of INV/PROP ids) (FR-019)
+- [X] T007 [P] `evals/fixtures/transactions.json`: fixed transaction set for ask cases with hand-computed expected answers in the dataset
+- [X] T008 [P] `evals/threshold.json`: spec Evaluation Threshold (R=3, 100% structural, 100% guardrail, ≥ 0.95 case pass, mean semantic ≥ 0.90, service-error limit 0.10, per-type weights); hash-locked by the harness
+- [X] T009 Evaluation harness `.harness/evaluate.py` + `.harness/checks/structural.py` (Layer 1, jsonschema against `contracts/parse_result.schema.json` and `query_result.schema.json`), `.harness/checks/properties.py` (Layer 2: INV-2..INV-9, PROP-1..PROP-5, implemented independently of `src/`), `.harness/checks/semantic.py` (Layer 3 weighted scoring); aggregation, SERVICE_ERROR handling, INCONCLUSIVE rule; writes `evidence/eval-runs/<ts>_<label>/{eval-results.json, failures.md}` (FR-020, research R7); after writing, scans every evidence file it produced for unmasked OTPs / ≥ 9-digit runs and fails the run with `EVIDENCE_LEAK` if any are found (INV-6, constitution III)
+- [X] T010 [P] Harness self-tests `tests/harness/test_checks.py`: each check catches a hand-made violating output and accepts a valid one (so the harness itself is validated)
 - [ ] T011 [P] `src/moneylens/core/contracts.py`: load the four schemas from `specs/001-sms-finance-inbox/contracts/` and validate (constitution I)
 - [ ] T012 [P] `src/moneylens/core/amounts.py` + `tests/unit/test_amounts.py`: find all INR amounts → paise (spec edge cases `Rs.1,250.00`, `INR 1,250.5`, `₹1,250`, `Rs 1250`)
 - [ ] T013 [P] `src/moneylens/core/dates.py` + `tests/unit/test_dates.py`: SMS date parsing with year inference (spec edge case) and FR-012 period resolution

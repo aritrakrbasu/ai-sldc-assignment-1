@@ -57,3 +57,9 @@ Result: 1 CRITICAL, 1 HIGH, 3 MEDIUM, 1 LOW. Student approved "apply all 6":
 - F1 MED INVALID_QUESTION vs 422 -> unified on 422 VALIDATION_ERROR; schema enum updated
 - C1 MED ALREADY_SHARED not in spec -> added to FR-016
 - C2 LOW SC-006 manual -> noted in T043
+
+## 7. /speckit-implement (in progress)
+- Setup T001-T005; evaluation assets T006-T010 written and hash-locked BEFORE app logic.
+- Spec revision during harness writing (pre-implementation): FR-002(b)/INV-6 long-number rule
+  narrowed so date-times are not masked (recorded in spec Clarifications).
+- research R3 amended: client-side rate limiter MONEYLENS_RPM (default 10/min).

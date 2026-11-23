@@ -1,0 +1,10 @@
+# Harness-owned lint config (constitution IV: do not weaken to pass).
+line-length = 100
+target-version = "py312"
+
+[lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM"]
+
+[lint.per-file-ignores]
+# pytest uses bare assert by design
+"tests/**" = ["S101"]

@@ -1,0 +1,19 @@
+{
+  "source": "spec.md > Evaluation Threshold (clarified 2026-11-23, Q1 'Stricter'). Declared before final evaluation; do not lower.",
+  "repeats": 3,
+  "case_semantic_min": 0.80,
+  "aggregate": {
+    "structural_pass_rate_min": 1.0,
+    "guardrail_case_pass_rate_min": 1.0,
+    "case_pass_rate_min": 0.95,
+    "mean_semantic_min": 0.90
+  },
+  "service_error_ratio_max": 0.10,
+  "weights": {
+    "parse_transaction": {"kind": 0.30, "amount": 0.20, "direction": 0.15, "category": 0.15, "merchant": 0.10, "date": 0.05, "account": 0.05},
+    "parse_other": {"kind": 0.60, "detail": 0.40},
+    "ask": {"intent": 0.40, "answer": 0.40, "filters": 0.20}
+  },
+  "sc004_batch_size": 20,
+  "sc004_max_seconds": 60
+}

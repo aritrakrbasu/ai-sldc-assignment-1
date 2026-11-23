@@ -14,6 +14,7 @@
 
 - Q: How strict is the evaluation PASS threshold? → A: Stricter than drafted: R = 3 repeats (every repeat must pass), 100% structural, 100% safety cases, ≥ 95% of cases pass, mean semantic score ≥ 0.90.
 - Q: Which period applies when a question names none? → A: Current calendar month to date, reported with `period_defaulted=true`.
+- Spec revision (agent finding while writing harness checks, before any implementation): the FR-002(b) "≥ 9 digits with spaces/dashes" rule would also have masked date-times such as `2026-11-20 14:32` (10 digits). It was narrowed to continuous ≥ 9-digit runs or 4-digit card groups. INV-6 follows FR-002(b).
 - Q: Which AI model is used? → A: The newest stable Gemini "flash" model available to the student's key, chosen at setup from the model list, temperature 0.2. The exact model id and version are recorded in every result (FR-009).
 
 ## User Scenarios & Testing *(mandatory)*
@@ -186,8 +187,10 @@ and split dialog.
   optional reference date (defaults to today), and return one result per message in input order.
 - **FR-002**: Before any text leaves the application, the system MUST mask (a) OTP-like codes:
   runs of 4–8 digits within 40 characters of the words OTP, one time password, verification
-  code, passcode, PIN or code, replaced by `[OTP]`; and (b) any run of ≥ 9 digits (spaces or
-  dashes allowed between groups), replaced by `XXXX` followed by the last 4 digits. Masked text is
+  code, passcode, PIN or code, replaced by `[OTP]`; and (b) long numbers: any continuous run of
+  ≥ 9 digits, or 3–4 groups of exactly 4 digits separated by single spaces or dashes (card
+  format), replaced by `XXXX` followed by the last 4 digits. Dates and times such as
+  `2026-11-20 14:32` are NOT long numbers. Masked text is
   the only text that is stored, displayed, sent to the AI or written to evidence.
 - **FR-003**: Each result MUST conform to the Output Schema Contract (below).
 - **FR-004**: For `TRANSACTION` the system MUST extract amount, direction, merchant/counterparty
@@ -289,7 +292,7 @@ and split dialog.
 - **INV-5 (merchant grounding)**: `merchant`, if present, shares at least one alphanumeric token
   of ≥ 3 characters with `masked_text` (case-insensitive).
 - **INV-6 (no secret leakage)**: No result field, stored record or evidence file contains an
-  unmasked OTP or a run of ≥ 9 digits.
+  unmasked OTP or a long number as defined in FR-002(b).
 - **INV-7**: `txn_date` and `due_date`, when present, are valid calendar dates. `txn_date` ≤
   reference date.
 - **INV-8**: For questions, numbers appear only in `answer`, which is computed by the

@@ -29,11 +29,14 @@ errors are raised as `google.genai.errors.ClientError` / `ServerError` (subclass
 - **Rationale**: A bad message cannot corrupt its neighbours, results map 1:1 to cases (INV-9),
   and service failures stay per message. Batch prompts were rejected because one malformed
   response would fail every message.
+- **Amendment (2026-11-23, before implementation)**: a client-side limiter
+  (`MONEYLENS_RPM`, default 10 requests/minute) spaces calls so that free-tier quotas are not
+  exceeded during evaluation. Retries still follow the policy above.
 
 ## R4. Masking before the model (GR-1)
 - **Decision**: Regexes. OTP codes are 4–8 digits within 40 characters of `otp|one time
   password|verification code|passcode|pin|code`, replaced by `[OTP]`. Long numbers are
-  `\d(?:[ -]?\d){8,}`, replaced by `XXXX` + last 4 digits. Masking runs first. A final leak scan
+  `\d{9,}` or `\d{4}(?:[ -]\d{4}){2,3}` (spec FR-002(b) revision), replaced by `XXXX` + last 4 digits. Masking runs first. A final leak scan
   re-checks every outgoing prompt and every result.
 - **Alternatives**: Asking the model to redact. Rejected, because the secret would already have
   left the device.

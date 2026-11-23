@@ -1,0 +1,145 @@
+{
+  "reference_date": "2026-11-23",
+  "transactions": [
+    {
+      "id": 1,
+      "txn_date": "2026-11-17",
+      "direction": "DEBIT",
+      "amount_paise": 25000,
+      "merchant": "Swiggy",
+      "category": "FOOD",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 2,
+      "txn_date": "2026-11-19",
+      "direction": "DEBIT",
+      "amount_paise": 40000,
+      "merchant": "Zomato",
+      "category": "FOOD",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 3,
+      "txn_date": "2026-11-20",
+      "direction": "DEBIT",
+      "amount_paise": 18000,
+      "merchant": "Uber India",
+      "category": "TRANSPORT",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 4,
+      "txn_date": "2026-11-21",
+      "direction": "DEBIT",
+      "amount_paise": 149900,
+      "merchant": "Amazon Pay India",
+      "category": "SHOPPING",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 5,
+      "txn_date": "2026-11-22",
+      "direction": "DEBIT",
+      "amount_paise": 64000,
+      "merchant": "BigBasket",
+      "category": "GROCERIES",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 6,
+      "txn_date": "2026-11-23",
+      "direction": "DEBIT",
+      "amount_paise": 12000,
+      "merchant": "Swiggy",
+      "category": "FOOD",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 7,
+      "txn_date": "2026-11-05",
+      "direction": "DEBIT",
+      "amount_paise": 2500000,
+      "merchant": "Prestige Estates",
+      "category": "RENT",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 8,
+      "txn_date": "2026-11-01",
+      "direction": "CREDIT",
+      "amount_paise": 8500000,
+      "merchant": "ACME Technologies",
+      "category": "INCOME",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 9,
+      "txn_date": "2026-11-12",
+      "direction": "DEBIT",
+      "amount_paise": 30000,
+      "merchant": "Zomato",
+      "category": "FOOD",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 10,
+      "txn_date": "2026-10-15",
+      "direction": "DEBIT",
+      "amount_paise": 55000,
+      "merchant": "Swiggy",
+      "category": "FOOD",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 11,
+      "txn_date": "2026-10-28",
+      "direction": "DEBIT",
+      "amount_paise": 64900,
+      "merchant": "Netflix",
+      "category": "ENTERTAINMENT",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 12,
+      "txn_date": "2026-10-03",
+      "direction": "DEBIT",
+      "amount_paise": 22000,
+      "merchant": "Uber India",
+      "category": "TRANSPORT",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 13,
+      "txn_date": "2026-11-15",
+      "direction": "CREDIT",
+      "amount_paise": 34900,
+      "merchant": "Myntra",
+      "category": "SHOPPING",
+      "channel": "UPI",
+      "account_last4": "4821"
+    },
+    {
+      "id": 14,
+      "txn_date": "2026-11-08",
+      "direction": "DEBIT",
+      "amount_paise": 184600,
+      "merchant": "BESCOM",
+      "category": "BILLS_UTILITIES",
+      "channel": "UPI",
+      "account_last4": "4821"
+    }
+  ]
+}
