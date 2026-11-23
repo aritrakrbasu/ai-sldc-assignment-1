@@ -23,10 +23,10 @@ must cite the FR / acceptance-scenario id they verify.
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [ ] T001 Create Python package skeleton `src/splitease/{core,storage,api}/__init__.py`, `src/splitease/__main__.py` and `pyproject.toml` (src-layout, deps from plan.md, `[dev]` extra with pytest, pytest-cov, hypothesis, httpx, ruff, bandit)
-- [ ] T002 [P] Scaffold Vite React-TS app in `frontend/` (React 19, Vite 8, Vitest, Testing Library, jsdom, ESLint with typescript-eslint + react-hooks) with `npm run build|lint|test` scripts; dev proxy `/api` → `http://127.0.0.1:8000`
-- [ ] T003 [P] Harness config: `.harness/ruff.toml` (rules E,F,W,I,B,UP,S,SIM; tests may use `assert`), `.harness/bandit.yaml`, `.harness/gates.json` listing gates lint-python, lint-frontend, security-python, security-deps, tests-python (cov ≥ 90 on `splitease.core`), tests-frontend (research R7)
-- [ ] T004 Harness runner `.harness/run_harness.py`: runs each gate as subprocess, captures stdout/stderr/exit code/duration, writes `evidence/harness-runs/<UTC-timestamp>_<label>/{result.json,<gate>.log}`, prints a PASS/FAIL table, for pytest/vitest failures extracts failing test ids into `result.json.failures`, exits 1 on any mandatory failure; refuses to run if `gates.json` mandatory set was reduced (hash check against `.harness/gates.lock`)
+- [X] T001 Create Python package skeleton `src/splitease/{core,storage,api}/__init__.py`, `src/splitease/__main__.py` and `pyproject.toml` (src-layout, deps from plan.md, `[dev]` extra with pytest, pytest-cov, hypothesis, httpx, ruff, bandit)
+- [X] T002 [P] Scaffold Vite React-TS app in `frontend/` (React 19, Vite 8, Vitest, Testing Library, jsdom, ESLint with typescript-eslint + react-hooks) with `npm run build|lint|test` scripts; dev proxy `/api` → `http://127.0.0.1:8000`
+- [X] T003 [P] Harness config: `.harness/ruff.toml` (rules E,F,W,I,B,UP,S,SIM; tests may use `assert`), `.harness/bandit.yaml`, `.harness/gates.json` listing gates lint-python, lint-frontend, security-python, security-deps, tests-python (cov ≥ 90 on `splitease.core`), tests-frontend (research R7)
+- [X] T004 Harness runner `.harness/run_harness.py`: runs each gate as subprocess, captures stdout/stderr/exit code/duration, writes `evidence/harness-runs/<UTC-timestamp>_<label>/{result.json,<gate>.log}`, prints a PASS/FAIL table, for pytest/vitest failures extracts failing test ids into `result.json.failures`, exits 1 on any mandatory failure; refuses to run if `gates.json` mandatory set was reduced (hash check against `.harness/gates.lock`)
 
 ---
 

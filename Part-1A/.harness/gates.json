@@ -1,0 +1,21 @@
+{
+  "description": "SplitEase deterministic harness gates. All gates are mandatory.",
+  "gates": [
+    {"id": "lint-python", "kind": "lint", "cwd": ".",
+     "cmd": ["{python}", "-m", "ruff", "check", "src", "tests", ".harness", "--config", ".harness/ruff.toml", "--output-format", "concise"]},
+    {"id": "lint-frontend", "kind": "lint", "cwd": "frontend",
+     "cmd": ["{npm}", "run", "--silent", "lint"]},
+    {"id": "typecheck-frontend", "kind": "lint", "cwd": "frontend",
+     "cmd": ["{npx}", "tsc", "-p", "tsconfig.json"]},
+    {"id": "security-python", "kind": "security", "cwd": ".",
+     "cmd": ["{python}", "-m", "bandit", "-c", ".harness/bandit.yaml", "-r", "src", "-ll", "-f", "txt"]},
+    {"id": "security-deps", "kind": "security", "cwd": "frontend",
+     "cmd": ["{npm}", "audit", "--audit-level=high"]},
+    {"id": "tests-python", "kind": "tests", "cwd": ".",
+     "cmd": ["{python}", "-m", "pytest", "--cov=splitease.core", "--cov-report=term-missing", "--cov-fail-under=90", "--junitxml={run_dir}/tests-python.junit.xml", "-p", "no:cacheprovider"],
+     "junit": "tests-python.junit.xml"},
+    {"id": "tests-frontend", "kind": "tests", "cwd": "frontend",
+     "cmd": ["{npx}", "vitest", "run", "--reporter=default", "--reporter=junit", "--outputFile.junit={run_dir}/tests-frontend.junit.xml"],
+     "junit": "tests-frontend.junit.xml"}
+  ]
+}

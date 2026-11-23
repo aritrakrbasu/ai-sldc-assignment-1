@@ -1,0 +1,1 @@
+- 2026-11-23T16:50:01Z: <none> -> f22f5f421f5b — initial harness lock before any implementation (T004)

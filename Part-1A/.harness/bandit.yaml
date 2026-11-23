@@ -1,0 +1,3 @@
+# Harness-owned SAST config. Bandit runs with -ll (medium+ severity fails the gate).
+exclude_dirs: ["tests", ".venv", "frontend"]
+skips: []
