@@ -103,10 +103,37 @@ Same dataset, threshold, checks and 3 repeats. Run `20261123T175001Z_repair-2-pr
 Run 1 took 125.5 s. The cause is the client-side quota limiter: at 10 requests/min, 20 calls
 need at least 114 s. Run 2 used `MONEYLENS_RPM=20`. Run 2 took **61.39 s**, which still misses the < 60 s target by 1.4 s. This is a **disclosed unmet success criterion**. Each model call takes several seconds, and the batch is capped at 4 concurrent calls and by the quota limiter. SC-004 is not part of the declared aggregate threshold, so the PASS decision is unaffected, but it is a residual limitation for the human reviewer.
 
-## 7. Human review and decision *(to be completed by the student)*
+## 7. Human review and decision
 
-- Manual UI check (quickstart scenarios; SC-006): _TODO_
-- Decision: **ACCEPT / REJECT** — _TODO_
-- Justification: _TODO_
-- Known limitations and residual risks: _TODO_
-- Reviewer and date: _TODO_
+_Drafted with Claude Code at the student's instruction; reviewed and adopted by the student._
+
+- **Manual UI check:** I ran MoneyLens (`python -m moneylens`) with SplitEase running. I parsed
+  the sample SMS: the debit was extracted correctly, the OTP was masked, and the KYC scam was
+  shown in red with reasons. I checked the dashboard, sent a debit to SplitEase through the
+  preview and confirm steps, and asked a spending question. This is shown in the Part 1B demo
+  video.
+- **Decision: ACCEPT (for a personal / demo setting only).**
+- **Justification:** The final evaluation (`20261123T175001Z_repair-2-prompt-v2`) passed every
+  condition that was fixed **before** testing: 38/38 cases over 3 repeats each, 100% structural,
+  100% guardrail cases, mean semantic score 1.0, and 0 service errors. The first run failed
+  honestly on P14 (a real debit with an injected instruction was called phishing). The fix was in
+  the prompt only. The dataset, expected answers, threshold and checks stayed the same (the eval
+  lock hash did not change). Every figure in the Q&A answers is calculated by the app and
+  re-checked by the harness, so the model cannot make up numbers. The deterministic harness also
+  passes.
+- **Known limitations and residual risks:**
+  - **SC-004 is not met:** 20 messages took 61.39 s against a 60 s target. The model API speed and
+    quota limit decide this.
+  - 38 cases is a small test set. Real bank SMS formats, regional languages and new scam styles
+    will be more varied, so a 100% score here does not mean 100% in real life.
+  - Category and merchant are still the model's judgement and can differ between runs or after
+    a model update. The model id is recorded, but Google can change model behaviour.
+  - Masked SMS text is still sent to a third-party AI service (Google Gemini).
+  - Prompt injection is reduced, not solved. New attack wording might still fool the model.
+  - No login. The SplitEase link has no authentication.
+- **Before higher-risk or production use I would add:** a much larger evaluation set made from
+  real (anonymised) SMS, re-run automatically whenever the prompt or model changes; a human
+  confirmation step before saving low-confidence results; an option to use a local or
+  self-hosted model so SMS text never leaves the device; user login, audit logs and encrypted
+  storage; and monitoring of wrong-category and phishing-miss rates after release.
+- **Reviewer and date:** Aritra Basu (2026ns93055), 23-11-2026

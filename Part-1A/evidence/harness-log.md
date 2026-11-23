@@ -82,10 +82,30 @@ between initial and final generation is the line wrap in `splitting.py`; compare
   (`INVALID_PERCENT`, `INVALID_GROUP_NAME`/`INVALID_SPLIT_MODE`) were added to `data-model.md`
   while writing the tests, **before** implementation (commit `81a3ea9`).
 
-## 6. Human review and decision *(to be completed by the student)*
+## 6. Human review and decision
 
-- Manual UI check against `quickstart.md` (T050, including SC-002 timing): _TODO_
-- Decision: **ACCEPT / REJECT** — _TODO_
-- Justification: _TODO_
-- Known limitations and residual risks: _TODO_
-- Reviewer and date: _TODO_
+_Drafted with Claude Code at the student's instruction; reviewed and adopted by the student._
+
+- **Manual UI check:** I ran the app (`python -m splitease`) and used it like a real user. I created
+  a group, added expenses with different split types, checked the balances and the settle-up
+  list, recorded a payment and ran the harness. This is shown in the Part 1A demo video. The
+  numbers matched the examples in the spec (for example ₹1000 split three ways gives
+  333.34 / 333.33 / 333.33).
+- **Decision: ACCEPT.**
+- **Justification:** All 7 harness gates pass on the final version (167 Python tests with 100%
+  core coverage, 34 UI tests, lint, type check, Bandit and npm audit). The only failure (run 1) was
+  real: lint and type errors, including a type error in a test file that Vitest had silently
+  passed. It was fixed without deleting tests, weakening rules or editing the spec. The
+  important money rules (exact paise, balances always summing to zero) are checked by property
+  tests with 500+ random cases, so I trust them more than a few manual examples.
+- **Known limitations and residual risks:**
+  - No login or user accounts. Anyone who can open the app can change any group.
+  - The settle-up plan is greedy. It always uses at most (k − 1) payments, but it is not always the
+    smallest possible number.
+  - Members cannot be added or removed after a group is created, and expenses cannot be edited
+    (only deleted and added again).
+  - Only INR, and only tested on one local machine (Windows, Python 3.15).
+- **Before real use I would add:** login and per-group access control, an audit log of who
+  changed what, a backup of the SQLite file, and running the same harness in CI on every pull
+  request.
+- **Reviewer and date:** Aritra Basu (2026ns93055), 23-11-2026
