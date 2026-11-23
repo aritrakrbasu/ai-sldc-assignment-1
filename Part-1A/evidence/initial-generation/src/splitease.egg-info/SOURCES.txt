@@ -1,0 +1,10 @@
+pyproject.toml
+src/splitease/__init__.py
+src/splitease.egg-info/PKG-INFO
+src/splitease.egg-info/SOURCES.txt
+src/splitease.egg-info/dependency_links.txt
+src/splitease.egg-info/requires.txt
+src/splitease.egg-info/top_level.txt
+src/splitease/api/__init__.py
+src/splitease/core/__init__.py
+src/splitease/storage/__init__.py
