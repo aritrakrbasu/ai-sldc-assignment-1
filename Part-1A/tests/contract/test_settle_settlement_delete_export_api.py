@@ -97,7 +97,7 @@ def test_us4_5_reverse_settlement_undoes(client, make_group):
     assert bal(client, gid) == {"Asha": 0, "Bilal": 0, "Chen": 0}
 
 
-# ---- C5 delete expense (US5) ----
+# ---- C5 delete expense (US5, FR-011) ----
 def test_us5_1_c5_delete_restores_balances(client, make_group):
     gid, m = make_group()
     equal_all(client, gid, m, amount=3000, payer="Chen")

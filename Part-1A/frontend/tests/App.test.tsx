@@ -3,6 +3,7 @@ import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "../src/App";
+import type { GroupDetail } from "../src/api";
 
 type Handler = (url: string, init?: RequestInit) => { status: number; body?: unknown };
 
@@ -28,7 +29,7 @@ const GROUP = {
     { id: 13, name: "Chen", position: 2 },
   ],
 };
-const EMPTY_DETAIL = {
+const EMPTY_DETAIL: GroupDetail = {
   ...GROUP,
   expenses: [],
   settlements: [],

@@ -1,0 +1,26 @@
+$ C:\Program Files\nodejs\npx.cmd vitest run --reporter=default --reporter=junit --outputFile.junit=D:\college\AI\assingment-1\Part-1A\evidence\harness-runs\20261123T165915Z_repair-1/tests-frontend.junit.xml
+(cwd=frontend, exit=0, 10.55s)
+
+--- stdout ---
+
+ RUN  v5.1.1 D:/college/AI/assingment-1/Part-1A/frontend
+
+ ✓ tests/money.test.ts (28 tests) 5ms
+ ✓ tests/App.test.tsx (6 tests) 1554ms
+   ✓ US7-1 home page (2)
+     ✓ creates a group with members one per line 460ms
+   ✓ US7-2 expense form validation (2)
+     ✓ blocks an amount with 3 decimals before calling the API (FR-022) 336ms
+     ✓ shows the API error message verbatim and keeps state 315ms
+   ✓ US7-3 panels refresh after mutation (2)
+     ✓ reloads balances and settle-up after adding an expense 351ms
+
+ Test Files  2 passed (2)
+      Tests  34 passed (34)
+   Start at  22:29:45
+   Duration  6.25s (tests 49%, environment 39%, setup 7%, import 3%, transform 2%)
+
+JUNIT report written to D:/college/AI/assingment-1/Part-1A/evidence/harness-runs/20261123T165915Z_repair-1/tests-frontend.junit.xml
+
+--- stderr ---
+

@@ -53,3 +53,10 @@ Result: 0 CRITICAL, 2 HIGH, 4 MEDIUM, 1 LOW; coverage 28/28 requirements.
 - C1 MED EMPTY_SPLIT undefined in spec -> FR-010 + edge case
 - C2 LOW SC-002 manual only -> noted in T050
 Student approved "apply all 7" before implementation.
+
+## 7. /speckit-implement
+Input: (none — executed tasks.md phase by phase)
+Order: setup + harness (T001-T004, commit 730007a) -> spec-derived tests (commit 81a3ea9) ->
+implementation (commit cdebc15, snapshot evidence/initial-generation) -> harness run 1 FAIL ->
+repair-1 -> run 2 PASS -> polish (README, traceability) -> final run PASS.
+T050 (manual browser walkthrough incl. SC-002) is left for the student.

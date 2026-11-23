@@ -1,0 +1,10 @@
+$ C:\Program Files\nodejs\npx.cmd tsc -p tsconfig.json
+(cwd=frontend, exit=2, 4.93s)
+
+--- stdout ---
+src/main.tsx(4,8): error TS2882: Cannot find module or type declarations for side-effect import of './styles.css'.
+tests/App.test.tsx(126,13): error TS2322: Type '{ from_member: number; to_member: number; amount: number; }' is not assignable to type 'never'.
+tests/App.test.tsx(127,13): error TS2322: Type '{ from_member: number; to_member: number; amount: number; }' is not assignable to type 'never'.
+
+--- stderr ---
+

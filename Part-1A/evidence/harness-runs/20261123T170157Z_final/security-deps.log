@@ -1,0 +1,8 @@
+$ C:\Program Files\nodejs\npm.cmd audit --audit-level=high
+(cwd=frontend, exit=0, 2.82s)
+
+--- stdout ---
+found 0 vulnerabilities
+
+--- stderr ---
+

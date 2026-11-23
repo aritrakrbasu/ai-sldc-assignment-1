@@ -1,0 +1,7 @@
+$ C:\Program Files\nodejs\npx.cmd tsc -p tsconfig.json
+(cwd=frontend, exit=0, 3.89s)
+
+--- stdout ---
+
+--- stderr ---
+

@@ -27,7 +27,8 @@ import subprocess  # nosec B404 - the harness exists to run fixed, configured to
 import sys
 import time
 from pathlib import Path
-from xml.etree import ElementTree as ET  # nosec B405 - parses JUnit files our own tools wrote
+
+from defusedxml import ElementTree as ET  # safe XML parsing (ruff S314 / bandit B314)
 
 ROOT = Path(__file__).resolve().parent.parent
 HARNESS = ROOT / ".harness"
@@ -65,7 +66,7 @@ def junit_failures(xml_path: Path) -> list[dict[str, str]]:
     if not xml_path.exists():
         return []
     failures: list[dict[str, str]] = []
-    tree = ET.parse(xml_path)  # nosec B314 - trusted file produced by pytest/vitest in this run
+    tree = ET.parse(xml_path)
     for case in tree.iter("testcase"):
         for tag in ("failure", "error"):
             node = case.find(tag)
@@ -85,7 +86,8 @@ def run_gate(gate: dict, run_dir: Path, tools: dict[str, str]) -> dict:
     subst = {**tools, "run_dir": str(run_dir)}
     cmd = [part.format(**subst) for part in gate["cmd"]]
     started = time.perf_counter()
-    proc = subprocess.run(  # nosec B603 - command list comes from the pinned gates.json
+    # The harness exists to run the fixed tool commands pinned (hash-locked) in gates.json.
+    proc = subprocess.run(  # noqa: S603  # nosec B603
         cmd,
         cwd=ROOT / gate["cwd"],
         capture_output=True,

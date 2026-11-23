@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: splitease
+Version: 1.0.0
+Summary: SplitEase - exact shared-expense splitter (Part 1A, SDD + harness assignment)
+Requires-Python: >=3.12
+Requires-Dist: fastapi>=0.115
+Requires-Dist: pydantic>=2.7
+Requires-Dist: uvicorn[standard]>=0.30
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+Requires-Dist: pytest-cov>=5; extra == "dev"
+Requires-Dist: hypothesis>=6.100; extra == "dev"
+Requires-Dist: httpx>=0.27; extra == "dev"
+Requires-Dist: ruff>=0.6; extra == "dev"
+Requires-Dist: bandit>=1.7; extra == "dev"

@@ -56,6 +56,7 @@ def test_fr014_member_order_uses_position_not_id():
 
 
 def test_constitution_perf_50_members_under_100ms():
+    """SC-003 / constitution: settle-up for 50 members in < 100 ms."""
     members = [Member(i, f"M{i}", i) for i in range(50)]
     bal = {i: (i * 7919) % 100000 - 50000 for i in range(49)}
     bal[49] = -sum(bal.values())

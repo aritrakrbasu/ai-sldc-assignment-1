@@ -1,1 +1,2 @@
 - 2026-11-23T16:50:01Z: <none> -> f22f5f421f5b — initial harness lock before any implementation (T004)
+- 2026-11-23T16:59:15Z: f22f5f421f5b -> cae0057b38d9 — repair-1: replace stdlib XML parser with defusedxml (ruff S314 finding), justify subprocess call (S603); add defusedxml dev dependency. No gate, rule or threshold removed.

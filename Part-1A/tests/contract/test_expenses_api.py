@@ -1,4 +1,4 @@
-"""T017 [US1] + T025 [US2] — contract C4, C7. FR-003..FR-010, FR-018."""
+"""T017 [US1] + T025 [US2] — contract C4, C7. FR-003..FR-010, FR-018, SC-005 (edge-case codes)."""
 
 import pytest
 

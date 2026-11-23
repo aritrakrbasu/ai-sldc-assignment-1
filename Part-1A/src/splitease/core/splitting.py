@@ -61,7 +61,9 @@ def compute_shares(
     """Return {member_id: share_in_paise} for every participant; sum == amount (FR-009)."""
     check_amount(amount)
     if split_mode not in MODES:
-        raise DomainError("INVALID_SPLIT_MODE", "Split mode must be EQUAL, EXACT, PERCENT or SHARES")
+        raise DomainError(
+            "INVALID_SPLIT_MODE", "Split mode must be EQUAL, EXACT, PERCENT or SHARES"
+        )
     parts = _ordered_participants(members, paid_by, splits)
 
     if split_mode == "EQUAL":

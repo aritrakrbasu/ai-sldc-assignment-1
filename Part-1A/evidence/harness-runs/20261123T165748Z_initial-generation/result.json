@@ -1,0 +1,145 @@
+{
+  "run_id": "20261123T165748Z_initial-generation",
+  "label": "initial-generation",
+  "timestamp_utc": "20261123T165748Z",
+  "config_hash": "f22f5f421f5b59363640f50929f8f6b9a95e6c2c2145e5bcd4caa38582ff64c9",
+  "python": "3.15.1",
+  "overall": "FAIL",
+  "gates": [
+    {
+      "id": "lint-python",
+      "kind": "lint",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_s": 2.31,
+      "command": [
+        "D:\\college\\AI\\assingment-1\\Part-1A\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "tests",
+        ".harness",
+        "--config",
+        ".harness/ruff.toml",
+        "--output-format",
+        "concise"
+      ],
+      "log": "lint-python.log",
+      "failures": [],
+      "output_tail": [
+        ".harness\\run_harness.py:68:12: S314 Using `xml` to parse untrusted data is known to be vulnerable to XML attacks; use `defusedxml` equivalents",
+        ".harness\\run_harness.py:88:12: S603 `subprocess` call: check for execution of untrusted input",
+        "src\\splitease\\core\\splitting.py:64:101: E501 Line too long (101 > 100)",
+        "Found 3 errors."
+      ]
+    },
+    {
+      "id": "lint-frontend",
+      "kind": "lint",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 7.14,
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.cmd",
+        "run",
+        "--silent",
+        "lint"
+      ],
+      "log": "lint-frontend.log",
+      "failures": []
+    },
+    {
+      "id": "typecheck-frontend",
+      "kind": "lint",
+      "status": "FAIL",
+      "exit_code": 2,
+      "duration_s": 4.93,
+      "command": [
+        "C:\\Program Files\\nodejs\\npx.cmd",
+        "tsc",
+        "-p",
+        "tsconfig.json"
+      ],
+      "log": "typecheck-frontend.log",
+      "failures": [],
+      "output_tail": [
+        "src/main.tsx(4,8): error TS2882: Cannot find module or type declarations for side-effect import of './styles.css'.",
+        "tests/App.test.tsx(126,13): error TS2322: Type '{ from_member: number; to_member: number; amount: number; }' is not assignable to type 'never'.",
+        "tests/App.test.tsx(127,13): error TS2322: Type '{ from_member: number; to_member: number; amount: number; }' is not assignable to type 'never'."
+      ]
+    },
+    {
+      "id": "security-python",
+      "kind": "security",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 0.35,
+      "command": [
+        "D:\\college\\AI\\assingment-1\\Part-1A\\.venv\\Scripts\\python.exe",
+        "-m",
+        "bandit",
+        "-c",
+        ".harness/bandit.yaml",
+        "-r",
+        "src",
+        "-ll",
+        "-f",
+        "txt"
+      ],
+      "log": "security-python.log",
+      "failures": []
+    },
+    {
+      "id": "security-deps",
+      "kind": "security",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 3.34,
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.cmd",
+        "audit",
+        "--audit-level=high"
+      ],
+      "log": "security-deps.log",
+      "failures": []
+    },
+    {
+      "id": "tests-python",
+      "kind": "tests",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 16.99,
+      "command": [
+        "D:\\college\\AI\\assingment-1\\Part-1A\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "--cov=splitease.core",
+        "--cov-report=term-missing",
+        "--cov-fail-under=90",
+        "--junitxml=D:\\college\\AI\\assingment-1\\Part-1A\\evidence\\harness-runs\\20261123T165748Z_initial-generation/tests-python.junit.xml",
+        "-p",
+        "no:cacheprovider"
+      ],
+      "log": "tests-python.log",
+      "failures": []
+    },
+    {
+      "id": "tests-frontend",
+      "kind": "tests",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_s": 13.88,
+      "command": [
+        "C:\\Program Files\\nodejs\\npx.cmd",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile.junit=D:\\college\\AI\\assingment-1\\Part-1A\\evidence\\harness-runs\\20261123T165748Z_initial-generation/tests-frontend.junit.xml"
+      ],
+      "log": "tests-frontend.log",
+      "failures": []
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="34" failures="0" errors="0" time="1.5585897">
+    <testsuite name="tests/App.test.tsx" timestamp="2026-11-23T16:59:51.768Z" hostname="CLIRKOL-249" tests="6" failures="0" errors="0" skipped="0" time="1.5539636">
+        <testcase classname="tests/App.test.tsx" name="US7-1 home page &gt; lists groups from the API" time="0.0785421">
+        </testcase>
+        <testcase classname="tests/App.test.tsx" name="US7-1 home page &gt; creates a group with members one per line" time="0.459786">
+        </testcase>
+        <testcase classname="tests/App.test.tsx" name="US7-2 expense form validation &gt; blocks an amount with 3 decimals before calling the API (FR-022)" time="0.3356319">
+        </testcase>
+        <testcase classname="tests/App.test.tsx" name="US7-2 expense form validation &gt; shows the API error message verbatim and keeps state" time="0.3150226">
+        </testcase>
+        <testcase classname="tests/App.test.tsx" name="US7-3 panels refresh after mutation &gt; reloads balances and settle-up after adding an expense" time="0.3510893">
+        </testcase>
+        <testcase classname="tests/App.test.tsx" name="US7-3 panels refresh after mutation &gt; renders user text as text, not HTML (constitution V)" time="0.0116068">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/money.test.ts" timestamp="2026-11-23T16:59:51.771Z" hostname="CLIRKOL-249" tests="28" failures="0" errors="0" skipped="0" time="0.0046261">
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; parses 1000 -&gt; 100000 paise" time="0.0014378">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; parses 1000.5 -&gt; 100050 paise" time="0.0001845">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; parses 1000.50 -&gt; 100050 paise" time="0.0001211">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; parses 0.1 -&gt; 10 paise" time="0.0001072">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; parses 0.01 -&gt; 1 paise" time="0.0001076">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; parses 333.33 -&gt; 33333 paise" time="0.0000936">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; parses  42  -&gt; 4200 paise" time="0.0000846">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; parses 10000000 -&gt; 1000000000 paise" time="0.0000833">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects 12.345" time="0.0001883">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects abc" time="0.0001182">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects -5" time="0.000067">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects 1e3" time="0.0000428">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects " time="0.0000351">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects   " time="0.0000345">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects 1,000" time="0.0000418">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects 0" time="0.0000411">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects 0.00" time="0.0000538">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects 10000000.01" time="0.0000543">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects .5" time="0.0000312">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; rejects 5." time="0.0000236">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-022 parseRupees &gt; gives a human readable reason for too many decimals" time="0.0000774">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-020 formatINR &gt; formats 0 -&gt; ₹0.00" time="0.0001437">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-020 formatINR &gt; formats 1 -&gt; ₹0.01" time="0.0000377">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-020 formatINR &gt; formats 33333 -&gt; ₹333.33" time="0.0000273">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-020 formatINR &gt; formats 100000 -&gt; ₹1,000.00" time="0.0000252">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-020 formatINR &gt; formats 10000000 -&gt; ₹1,00,000.00" time="0.0000243">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-020 formatINR &gt; formats 1000000000 -&gt; ₹1,00,00,000.00" time="0.0000254">
+        </testcase>
+        <testcase classname="tests/money.test.ts" name="FR-020 formatINR &gt; formats -16667 -&gt; -₹166.67" time="0.0000229">
+        </testcase>
+    </testsuite>
+</testsuites>
