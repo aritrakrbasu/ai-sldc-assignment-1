@@ -38,3 +38,7 @@ npm audit, pytest (+coverage >=90% core, hypothesis property tests), Vitest, orc
 .harness/run_harness.py writing JSON + log to evidence/."
 Output: plan.md, research.md (R1-R8), data-model.md, contracts/api.md, quickstart.md.
 Note: research R5 records the switch React 18 -> 19 (current major, verified with `npm view`).
+
+## 5. /speckit-tasks
+Input: (none — generated from plan.md, spec.md, data-model.md, contracts/api.md, research.md)
+Output: tasks.md — 50 tasks (T001–T050), tests-first per user story (constitution III).
