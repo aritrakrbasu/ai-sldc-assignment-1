@@ -8,6 +8,14 @@
 
 **Input**: User description: "SplitEase — a web app for friends, roommates and trip groups to record shared expenses and settle up fairly. Users create a group with 2-50 named members. Any member can add an expense (description, total amount in INR, payer, date) split in one of four modes: EQUAL among selected members, EXACT amounts per member, PERCENT per member (must total 100%), or SHARES (integer weights). The app shows each member's net balance (positive = is owed, negative = owes), a minimum-transactions settle-up plan (who pays whom how much), lets users record a settlement payment between two members, lets users delete an expense, and exports the group ledger as CSV. All money is integer paise; rounding remainders are distributed deterministically; balances always sum to zero. Includes a REST API and a React web UI."
 
+## Clarifications
+
+### Session 2026-11-23
+
+- Q: If a member records a settlement larger than what they owe, what should happen? → A: Allow it; the balance flips sign (receiver now owes payer the excess).
+- Q: Can a recorded settlement be deleted? → A: No, settlements are permanent; mistakes are corrected by recording a reverse settlement.
+- Q: Which amount format does the web form accept? → A: Rupees with at most 2 decimals (e.g. `1000`, `1000.5`, `1000.50`), converted to paise by exact string parsing; 3+ decimals rejected.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Create a group and split an expense equally (Priority: P1)
@@ -104,6 +112,10 @@ Bilal pays Asha ₹333.33 by UPI and records it so the balances update.
    rejected with `SAME_MEMBER`.
 3. **Given** a settlement with amount 0 or negative, **When** submitted, **Then** it is
    rejected as invalid input.
+4. **Given** balances A +33333, B −33333, **When** a settlement B→A of 50000 is recorded,
+   **Then** it is accepted and balances become A −16667, B +16667.
+5. **Given** a recorded settlement, **When** a user wants to undo it, **Then** there is no
+   delete operation; they record a reverse settlement (A→B of the same amount) instead.
 
 ---
 
@@ -176,6 +188,9 @@ settle-up plan, record a settlement, download CSV.
 - Amount above ₹1 crore (1,000,000,000 paise) or below 1 paisa → rejected as invalid input.
 - Group with fewer than 2 or more than 50 members, or duplicate member names
   (case-insensitive, trimmed) → rejected (`INVALID_MEMBERS`).
+- UI amount input `12.345`, `abc`, `-5` or `1e3` → rejected in the form; `0.1` → 10 paise
+  exactly; `1000.5` → 100050 paise.
+- Settlement exceeding the payer's debt → accepted; balances flip sign and still sum to 0.
 - Empty or whitespace-only description, or longer than 120 characters → rejected.
 - Settle-up ties (two creditors with equal balance) → ordered by member order so the plan is
   identical on every run.
@@ -224,7 +239,11 @@ settle-up plan, record a settlement, download CSV.
   (k − 1) payments where k is the number of members with non-zero balance.
 - **FR-015**: Users MUST be able to record a settlement (payer, receiver, amount in paise
   1–1,000,000,000, date). Payer and receiver MUST be different (`SAME_MEMBER`) members of the
-  group.
+  group. A settlement larger than the payer's current debt MUST be accepted (the balance flips
+  sign). Settlements are immutable: the system MUST NOT offer a delete or edit operation for them.
+- **FR-022**: The UI MUST accept amounts as rupees with at most 2 decimal places, convert them
+  to paise by exact decimal string parsing (never binary floating point), and reject inputs with
+  3 or more decimals, non-numeric characters or values outside the allowed range before sending.
 
 **Export**
 - **FR-016**: Users MUST be able to export a group ledger as CSV with the columns and ordering

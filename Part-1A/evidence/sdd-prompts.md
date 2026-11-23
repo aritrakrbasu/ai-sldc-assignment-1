@@ -21,3 +21,11 @@ payment between two members, lets users delete an expense, and exports the group
 All money is integer paise; rounding remainders are distributed deterministically; balances
 always sum to zero. Includes a REST API and a React web UI."
 Output: `specs/001-shared-expense-splitter/spec.md`, `checklists/requirements.md` (all items pass)
+
+## 3. /speckit-clarify
+Questions asked by the agent and answered by the student (Aritra Basu):
+- Q1 Settlement larger than debt? → "Allow it" (balance flips sign)
+- Q2 Can settlements be deleted? → "No, permanent" (correct with reverse settlement)
+- Q3 UI amount format? → "Rupees, max 2 decimals"
+Output: `## Clarifications` session 2026-11-23 in spec.md; FR-015 updated; FR-022 added;
+US4 scenarios 4-5 and edge cases added.
