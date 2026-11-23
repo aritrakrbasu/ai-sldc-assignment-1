@@ -38,8 +38,14 @@ CREATE TABLE IF NOT EXISTS bills (
 );
 """
 
-TXN_COLUMNS = ("t.id, t.amount_paise, t.direction, t.merchant, t.account_last4, t.txn_date, "
-               "t.channel, t.category, t.shared_expense_id, m.masked_text, m.reference_date")
+SELECT_TXNS = (
+    "SELECT t.id, t.amount_paise, t.direction, t.merchant, t.account_last4, t.txn_date, "
+    "t.channel, t.category, t.shared_expense_id, m.masked_text, m.reference_date "
+    "FROM transactions t JOIN messages m ON m.id = t.message_id "
+)
+LIST_TXNS = SELECT_TXNS + "ORDER BY COALESCE(t.txn_date, m.reference_date) DESC, t.id DESC"
+LIST_TXNS_LIMIT = LIST_TXNS + " LIMIT ?"
+GET_TXN = SELECT_TXNS + "WHERE t.id = ?"
 
 
 def content_hash(masked_text: str) -> str:
@@ -113,14 +119,12 @@ class Repository:
             return int(self._conn.execute("SELECT MAX(id) FROM transactions").fetchone()[0])
 
     def list_transactions(self, limit: int | None = None) -> list[dict]:
-        sql = (f"SELECT {TXN_COLUMNS} FROM transactions t JOIN messages m ON m.id = t.message_id "  # noqa: S608
-               "ORDER BY COALESCE(t.txn_date, m.reference_date) DESC, t.id DESC")
-        params: tuple = ()
-        if limit is not None:
-            sql += " LIMIT ?"
-            params = (limit,)
         with self._lock:
-            return [dict(r) for r in self._conn.execute(sql, params).fetchall()]
+            if limit is None:
+                rows = self._conn.execute(LIST_TXNS).fetchall()
+            else:
+                rows = self._conn.execute(LIST_TXNS_LIMIT, (limit,)).fetchall()
+        return [dict(r) for r in rows]
 
     def transactions_for_query(self) -> list[dict]:
         """Transactions with null txn_date fall back to the message reference date
@@ -130,9 +134,7 @@ class Repository:
 
     def get_transaction(self, tid: int) -> dict | None:
         with self._lock:
-            row = self._conn.execute(
-                f"SELECT {TXN_COLUMNS} FROM transactions t JOIN messages m "  # noqa: S608
-                "ON m.id = t.message_id WHERE t.id = ?", (tid,)).fetchone()
+            row = self._conn.execute(GET_TXN, (tid,)).fetchone()
         return dict(row) if row else None
 
     def mark_shared(self, tid: int, expense_id: int) -> None:

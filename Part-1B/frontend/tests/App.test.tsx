@@ -168,7 +168,7 @@ describe("Split dialog (US5)", () => {
     await user.click(screen.getByRole("tab", { name: "Dashboard" }));
     await user.click(await screen.findByRole("button", { name: "Split Swiggy in SplitEase" }));
     const dialog = await screen.findByRole("dialog");
-    await within(dialog).findByText("Riya");
+    await within(dialog).findByRole("checkbox", { name: "Riya" });
     await user.click(within(dialog).getByRole("button", { name: "Preview" }));
     expect(await within(dialog).findByText(/Swiggy · ₹250.00 · split equally between 2/)).toBeInTheDocument();
     expect(posts).toHaveLength(1);

@@ -1,1 +1,2 @@
 - 2026-11-23T17:20:26Z [eval.lock]: <none> -> 7a0679b44aff — initial lock of dataset (38 cases), threshold (spec, clarified), fixture and checks before any app implementation (T006-T010)
+- 2026-11-23T17:27:55Z: <none> -> d390719d367e — initial lock of deterministic gates; pinned files unchanged since pre-implementation commit db4ac12

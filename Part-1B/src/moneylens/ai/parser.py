@@ -1,4 +1,7 @@
-"""SMS parse pipeline (T024): mask -> prompt -> LLM -> JSON -> schema -> grounding -> ParseResult."""
+"""SMS parse pipeline (T024).
+
+mask -> prompt -> LLM -> JSON -> schema -> grounding -> ParseResult.
+"""
 
 from __future__ import annotations
 

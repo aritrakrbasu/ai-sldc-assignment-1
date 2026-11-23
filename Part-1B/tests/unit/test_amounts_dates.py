@@ -5,8 +5,13 @@ import datetime as dt
 import pytest
 
 from moneylens.core.amounts import find_amounts
-from moneylens.core.dates import last_n_days, month_to_date, previous_month, previous_week, \
-    week_to_date
+from moneylens.core.dates import (
+    last_n_days,
+    month_to_date,
+    previous_month,
+    previous_week,
+    week_to_date,
+)
 
 REF = dt.date(2026, 11, 23)  # Monday
 

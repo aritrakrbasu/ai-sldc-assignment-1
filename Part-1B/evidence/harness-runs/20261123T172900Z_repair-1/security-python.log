@@ -1,0 +1,35 @@
+$ D:\college\AI\assingment-1\Part-1B\.venv\Scripts\python.exe -m bandit -c .harness/bandit.yaml -r src scripts -ll -f txt
+(cwd=., exit=0, 0.34s)
+
+--- stdout ---
+Run started:2026-11-23 17:29:10.457751+00:00
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 789
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 1
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 1
+		High: 0
+Files skipped (0):
+
+--- stderr ---
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	using config: .harness/bandit.yaml
+[main]	INFO	running on Python 3.15.1
+

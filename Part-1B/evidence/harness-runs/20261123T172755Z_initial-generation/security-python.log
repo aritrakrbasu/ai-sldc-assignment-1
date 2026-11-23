@@ -1,0 +1,56 @@
+$ D:\college\AI\assingment-1\Part-1B\.venv\Scripts\python.exe -m bandit -c .harness/bandit.yaml -r src scripts -ll -f txt
+(cwd=., exit=1, 0.39s)
+
+--- stdout ---
+Run started:2026-11-23 17:28:11.374959+00:00
+
+Test results:
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: src\moneylens\storage\repository.py:116:17
+115	    def list_transactions(self, limit: int | None = None) -> list[dict]:
+116	        sql = (f"SELECT {TXN_COLUMNS} FROM transactions t JOIN messages m ON m.id = t.message_id "  # noqa: S608
+117	               "ORDER BY COALESCE(t.txn_date, m.reference_date) DESC, t.id DESC")
+118	        params: tuple = ()
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: src\moneylens\storage\repository.py:134:18
+133	            row = self._conn.execute(
+134	                f"SELECT {TXN_COLUMNS} FROM transactions t JOIN messages m "  # noqa: S608
+135	                "ON m.id = t.message_id WHERE t.id = ?", (tid,)).fetchone()
+136	        return dict(row) if row else None
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 785
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 1
+		Medium: 2
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 1
+		Medium: 2
+		High: 0
+Files skipped (0):
+
+--- stderr ---
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	using config: .harness/bandit.yaml
+[main]	INFO	running on Python 3.15.1
+

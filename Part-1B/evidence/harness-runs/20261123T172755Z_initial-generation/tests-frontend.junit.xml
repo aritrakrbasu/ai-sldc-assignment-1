@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="12" failures="1" errors="0" time="2.2677359">
+    <testsuite name="tests/App.test.tsx" timestamp="2026-11-23T17:28:29.507Z" hostname="CLIRKOL-249" tests="5" failures="1" errors="0" skipped="0" time="2.2604945">
+        <testcase classname="tests/App.test.tsx" name="Inbox (US1, US6) &gt; parses pasted messages split by blank lines and shows cards" time="0.396703">
+        </testcase>
+        <testcase classname="tests/App.test.tsx" name="Inbox (US1, US6) &gt; phishing card lists reasons and has no split action (US6-2)" time="0.1311529">
+        </testcase>
+        <testcase classname="tests/App.test.tsx" name="Ask (US4) &gt; shows interpreted filters and the computed answer" time="0.3177693">
+        </testcase>
+        <testcase classname="tests/App.test.tsx" name="Ask (US4) &gt; shows the clarification and no number for out-of-scope" time="0.2232887">
+        </testcase>
+        <testcase classname="tests/App.test.tsx" name="Split dialog (US5) &gt; requires preview then explicit confirmation" time="1.1881847">
+            <failure message="Found multiple elements with the text: Riya
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+&lt;option
+  value=&quot;11&quot;
+&gt;
+  Riya
+&lt;/option&gt;
+
+Ignored nodes: comments, script, style
+&lt;span&gt;
+  Riya
+&lt;/span&gt;
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+&lt;div
+  aria-labelledby=&quot;split-h&quot;
+  aria-modal=&quot;true&quot;
+  class=&quot;card dialog&quot;
+  role=&quot;dialog&quot;
+&gt;
+  &lt;h2
+    id=&quot;split-h&quot;
+  &gt;
+    Split in SplitEase
+  &lt;/h2&gt;
+  &lt;p
+    class=&quot;muted small&quot;
+  &gt;
+    Swiggy
+     · 
+    ₹250.00
+     · 
+    2026-11-18
+  &lt;/p&gt;
+  &lt;label&gt;
+    Group
+    &lt;select&gt;
+      &lt;option
+        value=&quot;1&quot;
+      &gt;
+        Flat
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+  &lt;label&gt;
+    Paid by
+    &lt;select&gt;
+      &lt;option
+        value=&quot;11&quot;
+      &gt;
+        Riya
+      &lt;/option&gt;
+      &lt;option
+        value=&quot;12&quot;
+      &gt;
+        Sam
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;
+      Split equally between
+    &lt;/legend&gt;
+    &lt;label
+      class=&quot;check&quot;
+    &gt;
+      &lt;input
+        checked=&quot;&quot;
+        type=&quot;checkbox&quot;
+      /&gt;
+      &lt;span&gt;
+        Riya
+      &lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label
+      class=&quot;check&quot;
+    &gt;
+      &lt;input
+        checked=&quot;&quot;
+        type=&quot;checkbox&quot;
+      /&gt;
+      &lt;span&gt;
+        Sam
+      &lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;div
+    class=&quot;row&quot;
+  &gt;
+    &lt;button&gt;
+      Cancel
+    &lt;/button&gt;
+    &lt;button
+      class=&quot;primary&quot;
+    &gt;
+      Preview
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+Ignored nodes: comments, script, style
+&lt;div
+  aria-labelledby=&quot;split-h&quot;
+  aria-modal=&quot;true&quot;
+  class=&quot;card dialog&quot;
+  role=&quot;dialog&quot;
+&gt;
+  &lt;h2
+    id=&quot;split-h&quot;
+  &gt;
+    Split in SplitEase
+  &lt;/h2&gt;
+  &lt;p
+    class=&quot;muted small&quot;
+  &gt;
+    Swiggy
+     · 
+    ₹250.00
+     · 
+    2026-11-18
+  &lt;/p&gt;
+  &lt;label&gt;
+    Group
+    &lt;select&gt;
+      &lt;option
+        value=&quot;1&quot;
+      &gt;
+        Flat
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+  &lt;label&gt;
+    Paid by
+    &lt;select&gt;
+      &lt;option
+        value=&quot;11&quot;
+      &gt;
+        Riya
+      &lt;/option&gt;
+      &lt;option
+        value=&quot;12&quot;
+      &gt;
+        Sam
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;
+      Split equally between
+    &lt;/legend&gt;
+    &lt;label
+      class=&quot;check&quot;
+    &gt;
+      &lt;input
+        checked=&quot;&quot;
+        type=&quot;checkbox&quot;
+      /&gt;
+      &lt;span&gt;
+        Riya
+      &lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label
+      class=&quot;check&quot;
+    &gt;
+      &lt;input
+        checked=&quot;&quot;
+        type=&quot;checkbox&quot;
+      /&gt;
+      &lt;span&gt;
+        Sam
+      &lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;div
+    class=&quot;row&quot;
+  &gt;
+    &lt;button&gt;
+      Cancel
+    &lt;/button&gt;
+    &lt;button
+      class=&quot;primary&quot;
+    &gt;
+      Preview
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;" type="TestingLibraryElementError">
+TestingLibraryElementError: Found multiple elements with the text: Riya
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+&lt;option
+  value=&quot;11&quot;
+&gt;
+  Riya
+&lt;/option&gt;
+
+Ignored nodes: comments, script, style
+&lt;span&gt;
+  Riya
+&lt;/span&gt;
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+&lt;div
+  aria-labelledby=&quot;split-h&quot;
+  aria-modal=&quot;true&quot;
+  class=&quot;card dialog&quot;
+  role=&quot;dialog&quot;
+&gt;
+  &lt;h2
+    id=&quot;split-h&quot;
+  &gt;
+    Split in SplitEase
+  &lt;/h2&gt;
+  &lt;p
+    class=&quot;muted small&quot;
+  &gt;
+    Swiggy
+     · 
+    ₹250.00
+     · 
+    2026-11-18
+  &lt;/p&gt;
+  &lt;label&gt;
+    Group
+    &lt;select&gt;
+      &lt;option
+        value=&quot;1&quot;
+      &gt;
+        Flat
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+  &lt;label&gt;
+    Paid by
+    &lt;select&gt;
+      &lt;option
+        value=&quot;11&quot;
+      &gt;
+        Riya
+      &lt;/option&gt;
+      &lt;option
+        value=&quot;12&quot;
+      &gt;
+        Sam
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;
+      Split equally between
+    &lt;/legend&gt;
+    &lt;label
+      class=&quot;check&quot;
+    &gt;
+      &lt;input
+        checked=&quot;&quot;
+        type=&quot;checkbox&quot;
+      /&gt;
+      &lt;span&gt;
+        Riya
+      &lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label
+      class=&quot;check&quot;
+    &gt;
+      &lt;input
+        checked=&quot;&quot;
+        type=&quot;checkbox&quot;
+      /&gt;
+      &lt;span&gt;
+        Sam
+      &lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;div
+    class=&quot;row&quot;
+  &gt;
+    &lt;button&gt;
+      Cancel
+    &lt;/button&gt;
+    &lt;button
+      class=&quot;primary&quot;
+    &gt;
+      Preview
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+Ignored nodes: comments, script, style
+&lt;div
+  aria-labelledby=&quot;split-h&quot;
+  aria-modal=&quot;true&quot;
+  class=&quot;card dialog&quot;
+  role=&quot;dialog&quot;
+&gt;
+  &lt;h2
+    id=&quot;split-h&quot;
+  &gt;
+    Split in SplitEase
+  &lt;/h2&gt;
+  &lt;p
+    class=&quot;muted small&quot;
+  &gt;
+    Swiggy
+     · 
+    ₹250.00
+     · 
+    2026-11-18
+  &lt;/p&gt;
+  &lt;label&gt;
+    Group
+    &lt;select&gt;
+      &lt;option
+        value=&quot;1&quot;
+      &gt;
+        Flat
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+  &lt;label&gt;
+    Paid by
+    &lt;select&gt;
+      &lt;option
+        value=&quot;11&quot;
+      &gt;
+        Riya
+      &lt;/option&gt;
+      &lt;option
+        value=&quot;12&quot;
+      &gt;
+        Sam
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;
+      Split equally between
+    &lt;/legend&gt;
+    &lt;label
+      class=&quot;check&quot;
+    &gt;
+      &lt;input
+        checked=&quot;&quot;
+        type=&quot;checkbox&quot;
+      /&gt;
+      &lt;span&gt;
+        Riya
+      &lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label
+      class=&quot;check&quot;
+    &gt;
+      &lt;input
+        checked=&quot;&quot;
+        type=&quot;checkbox&quot;
+      /&gt;
+      &lt;span&gt;
+        Sam
+      &lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;div
+    class=&quot;row&quot;
+  &gt;
+    &lt;button&gt;
+      Cancel
+    &lt;/button&gt;
+    &lt;button
+      class=&quot;primary&quot;
+    &gt;
+      Preview
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/App.test.tsx:171:26
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/format.test.ts" timestamp="2026-11-23T17:28:29.519Z" hostname="CLIRKOL-249" tests="7" failures="0" errors="0" skipped="0" time="0.0072414">
+        <testcase classname="tests/format.test.ts" name="formatINR &gt; 0 -&gt; ₹0.00" time="0.0023923">
+        </testcase>
+        <testcase classname="tests/format.test.ts" name="formatINR &gt; 25000 -&gt; ₹250.00" time="0.0002136">
+        </testcase>
+        <testcase classname="tests/format.test.ts" name="formatINR &gt; 8534900 -&gt; ₹85,349.00" time="0.0001862">
+        </testcase>
+        <testcase classname="tests/format.test.ts" name="formatINR &gt; 23500000 -&gt; ₹2,35,000.00" time="0.0001995">
+        </testcase>
+        <testcase classname="tests/format.test.ts" name="formatINR &gt; null -&gt; —" time="0.0001807">
+        </testcase>
+        <testcase classname="tests/format.test.ts" name="splitMessages (US6-1) &gt; splits on blank lines and trims" time="0.0010481">
+        </testcase>
+        <testcase classname="tests/format.test.ts" name="splitMessages (US6-1) &gt; handles CRLF from uploaded .txt files and ignores empty input" time="0.0003115">
+        </testcase>
+    </testsuite>
+</testsuites>
