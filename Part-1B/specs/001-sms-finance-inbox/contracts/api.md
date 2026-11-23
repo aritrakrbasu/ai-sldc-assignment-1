@@ -22,7 +22,11 @@ The spec's "confirmation required" (US5-1) appears as `status: "preview"` with c
 
 ## UI contract
 One page with three tabs: **Inbox** (paste textarea, upload `.txt`, Parse button, result cards
-with kind badge; phishing cards red with reasons and no split action; debit cards have a
-"Split in SplitEase" button that opens a dialog with group/payer/participants, a preview and a
-Confirm button), **Dashboard** (date range, category bars, totals, recent list) and **Ask**
+with kind badge; phishing cards red with reasons and no split action), **Dashboard** (date
+range, category bars, totals, recent list; each stored DEBIT has a "Split in SplitEase" button
+that opens a dialog with group/payer/participants, a Preview and a "Confirm and send" button) and **Ask**
 (question box, interpreted filters, computed answer or clarification).
+
+_Revision 2026-11-23 (during implementation, before first evaluation):_ the split button moved
+from Inbox cards to stored transactions on the Dashboard. `ParseResult` (schema,
+`additionalProperties: false`) has no stored-transaction id, and a split needs one (M7).
