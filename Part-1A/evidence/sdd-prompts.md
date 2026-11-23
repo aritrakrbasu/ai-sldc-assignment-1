@@ -29,3 +29,12 @@ Questions asked by the agent and answered by the student (Aritra Basu):
 - Q3 UI amount format? → "Rupees, max 2 decimals"
 Output: `## Clarifications` session 2026-11-23 in spec.md; FR-015 updated; FR-022 added;
 US4 scenarios 4-5 and edge cases added.
+
+## 4. /speckit-plan
+Input: "Backend: Python 3.15, FastAPI, Pydantic v2, stdlib sqlite3 (parameterised SQL). Pure domain
+package splitease.core (splitting, balances, settle-up, csv). Frontend: React 18 + TypeScript + Vite,
+ESLint, Vitest; built assets served by FastAPI so one command runs the app. Harness: Ruff, Bandit,
+npm audit, pytest (+coverage >=90% core, hypothesis property tests), Vitest, orchestrated by
+.harness/run_harness.py writing JSON + log to evidence/."
+Output: plan.md, research.md (R1-R8), data-model.md, contracts/api.md, quickstart.md.
+Note: research R5 records the switch React 18 -> 19 (current major, verified with `npm view`).
